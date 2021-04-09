@@ -1,0 +1,28 @@
+{
+  "name": "music-player",
+  "version": "1.0.0",
+  "description": "music player version 1",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/saifhamdare/music-player.git"
+  },
+  "keywords": [
+    "music",
+    "mp3player",
+    "songs",
+    "javascript"
+  ],
+  "author": "saif hamdare",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/saifhamdare/music-player/issues"
+  },
+  "homepage": "https://github.com/saifhamdare/music-player#readme",
+  "dependencies": {
+    "aos": "^2.3.4"
+  }
+}
