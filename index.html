@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script src="https://kit.fontawesome.com/a81368914c.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<title>Document</title>
+</head>
+<body>
+	<div class="main_div">
+		<div class="music_container">
+			<h2 id="title">LOTUS LANE</h2>
+			<h3 id="artist">The Loyalist</h3>
+			<div class="img_container">
+				<img src="images/img1.jpg">
+			</div>
+			<audio src="music/nainowale.mp3" ></audio>
+			<!-- CONTROL-->
+			<div class="music_control">
+				<i class="fas fa-backward" id="prev" title="previous"></i>
+				<i class="fas fa-play main_buttons" id="play" title="play/pause"></i>
+				<i class="fas fa-forward" id="next" title="next"></i>
+
+			</div>
+		</div>
+		
+	</div>
+	<script>
+		const music=document.querySelector("audio");
+		const img= document.querySelector("img");
+		const play =document.getElementById("play");
+		const artist =document.getElementById("artist");
+		const title =document.getElementById("title");
+		const next =document.getElementById("next");
+		const prev =document.getElementById("prev");
+		const songs=[
+		{
+			name:"Nainowale",
+			title:"Naino Wale ne",
+			artist:"Neeti Mohan",
+			img:"img1",
+		},
+		{
+			name:"nainonebandi",
+			title:"Naino ne Bandhi",
+			artist:"Yasser Desai",
+			img:"img2",
+		},
+		{
+			name:"rashke",
+			title:"Mere Rashke Qamar",
+			artist:"Rahat fateh Ali Khan",
+			img:"img3",
+		}]
+		let isPlaying = false;
+		const playMusic=()=>{
+			isPlaying=true;
+			music.play();
+			play.classList.replace("fa-play","fa-pause");
+			img.classList.add("anime");
+		};
+			const pauseMusic =()=>{
+			isPlaying=false;
+			music.pause();
+			play.classList.replace("fa-pause","fa-play");
+			img.classList.remove("anime");
+		};
+			play.addEventListener("click",()=>{
+				
+				isPlaying? pauseMusic():playMusic()
+			});
+
+			const loadSong=(songs)=>{
+				title.textContent=songs.title;
+				artist.textContent=songs.artist;
+				music.src="music/"+songs.name+".mp3";
+				img.src="images/"+songs.img+".jpg";
+			};
+		songIndex=0;
+		
+		const nextSong=()=>{
+			songIndex=(songIndex+1)%songs.length;
+			loadSong(songs[songIndex]);
+			playMusic();
+		}
+		const prevSong=()=>{
+			songIndex=(songIndex-1 +songs.length)%songs.length;
+			loadSong(songs[songIndex]);
+			playMusic();
+		}
+		next.addEventListener("click",nextSong);
+		prev.addEventListener("click",prevSong);
+	</script>
+</body>
+</html>
